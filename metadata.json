@@ -1,0 +1,5 @@
+{
+  "name": "NavBuddy",
+  "description": "Your ultimate travel assistant for every journey.",
+  "requestFramePermissions": ["camera"]
+}
