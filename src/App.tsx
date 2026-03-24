@@ -17,8 +17,9 @@ import CurrencyScreen from "./components/CurrencyScreen";
 import CameraScreen from "./components/CameraScreen";
 import MedicalScreen from "./components/MedicalScreen";
 import CountdownTodoScreen from "./components/CountdownTodoScreen";
+import LocationsScreen from "./components/LocationsScreen";
 
-type Screen = "welcome" | "signup" | "login" | "dashboard" | "terms" | "privacy" | "cookies" | "profile" | "settings" | "currency" | "camera" | "medical" | "countdown_todo";
+type Screen = "welcome" | "signup" | "login" | "dashboard" | "terms" | "privacy" | "cookies" | "profile" | "settings" | "currency" | "camera" | "medical" | "countdown_todo" | "locations";
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("welcome");
@@ -66,6 +67,18 @@ export default function App() {
           onCamera={() => navigateTo("camera")}
           onMed={() => navigateTo("medical")}
           onCountdownTodo={() => navigateTo("countdown_todo")}
+          onLocations={() => navigateTo("locations")}
+        />
+      )}
+      {currentScreen === "locations" && (
+        <LocationsScreen 
+          onBack={() => navigateTo("dashboard")}
+          onHome={() => navigateTo("dashboard")}
+          onCurrency={() => navigateTo("currency")}
+          onCamera={() => navigateTo("camera")}
+          onMed={() => navigateTo("medical")}
+          onProfile={() => navigateTo("profile")}
+          onSettings={() => navigateTo("settings")}
         />
       )}
       {currentScreen === "countdown_todo" && (
@@ -85,6 +98,7 @@ export default function App() {
           onPrivacy={() => navigateTo("privacy")}
           onCookies={() => navigateTo("cookies")}
           onCountdownTodo={() => navigateTo("countdown_todo")}
+          onLocations={() => navigateTo("locations")}
         />
       )}
       {currentScreen === "profile" && (
@@ -132,6 +146,7 @@ export default function App() {
           onCookies={() => navigateTo("cookies")}
           onCamera={() => navigateTo("camera")}
           onCountdownTodo={() => navigateTo("countdown_todo")}
+          onLocations={() => navigateTo("locations")}
         />
       )}
       {currentScreen === "camera" && (
@@ -146,6 +161,7 @@ export default function App() {
           onPrivacy={() => navigateTo("privacy")}
           onCookies={() => navigateTo("cookies")}
           onCountdownTodo={() => navigateTo("countdown_todo")}
+          onLocations={() => navigateTo("locations")}
         />
       )}
     </>

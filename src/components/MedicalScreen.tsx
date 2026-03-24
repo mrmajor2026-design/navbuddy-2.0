@@ -31,6 +31,7 @@ interface MedicalScreenProps {
   onPrivacy: () => void;
   onCookies: () => void;
   onCountdownTodo: () => void;
+  onLocations: () => void;
 }
 
 export default function MedicalScreen({ 
@@ -43,7 +44,8 @@ export default function MedicalScreen({
   onTerms,
   onPrivacy,
   onCookies,
-  onCountdownTodo
+  onCountdownTodo,
+  onLocations
 }: MedicalScreenProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -89,6 +91,7 @@ export default function MedicalScreen({
         onProfile={onProfile}
         onSettings={onSettings}
         onCountdownTodo={onCountdownTodo}
+        onLocations={onLocations}
       />
 
       {/* Header */}

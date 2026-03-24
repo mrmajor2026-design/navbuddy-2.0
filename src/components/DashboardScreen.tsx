@@ -30,6 +30,7 @@ interface DashboardScreenProps {
   onCamera: () => void;
   onMed: () => void;
   onCountdownTodo: () => void;
+  onLocations: () => void;
 }
 
 export default function DashboardScreen({ 
@@ -42,7 +43,8 @@ export default function DashboardScreen({
   onCurrency,
   onCamera,
   onMed,
-  onCountdownTodo
+  onCountdownTodo,
+  onLocations
 }: DashboardScreenProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const companions = [
@@ -62,6 +64,7 @@ export default function DashboardScreen({
         onProfile={onProfile}
         onSettings={onSettings}
         onCountdownTodo={onCountdownTodo}
+        onLocations={onLocations}
       />
 
       {/* Header */}

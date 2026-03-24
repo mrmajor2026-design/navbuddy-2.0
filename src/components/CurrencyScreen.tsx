@@ -30,6 +30,7 @@ interface CurrencyScreenProps {
   onPrivacy: () => void;
   onCookies: () => void;
   onCountdownTodo: () => void;
+  onLocations: () => void;
 }
 
 export default function CurrencyScreen({ 
@@ -42,7 +43,8 @@ export default function CurrencyScreen({
   onTerms,
   onPrivacy,
   onCookies,
-  onCountdownTodo
+  onCountdownTodo,
+  onLocations
 }: CurrencyScreenProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [amount, setAmount] = useState("45.00");
@@ -62,6 +64,7 @@ export default function CurrencyScreen({
         onProfile={onProfile}
         onSettings={onSettings}
         onCountdownTodo={onCountdownTodo}
+        onLocations={onLocations}
       />
 
       {/* Header */}

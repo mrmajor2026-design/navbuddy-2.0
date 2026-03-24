@@ -36,6 +36,7 @@ interface SidebarProps {
   onProfile: () => void;
   onSettings: () => void;
   onCountdownTodo: () => void;
+  onLocations: () => void;
 }
 
 export default function Sidebar({ 
@@ -47,14 +48,15 @@ export default function Sidebar({
   onCookies, 
   onProfile, 
   onSettings,
-  onCountdownTodo
+  onCountdownTodo,
+  onLocations
 }: SidebarProps) {
   const menuItems: { icon: any; label: string; active?: boolean; onClick?: () => void }[] = [
     { icon: Home, label: "Home", active: true },
     { icon: Timer, label: "Countdown/To-Do", onClick: onCountdownTodo },
     { icon: Calendar, label: "Itinerary Planner" },
     { icon: Map, label: "Maps" },
-    { icon: MapPin, label: "Essential Locations" },
+    { icon: MapPin, label: "Essential Locations", onClick: onLocations },
     { icon: Banknote, label: "Tipping Guide" },
     { icon: BriefcaseMedical, label: "Allergies" },
     { icon: Gavel, label: "Laws" },

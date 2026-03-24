@@ -28,6 +28,7 @@ interface CameraScreenProps {
   onPrivacy: () => void;
   onCookies: () => void;
   onCountdownTodo: () => void;
+  onLocations: () => void;
 }
 
 export default function CameraScreen({ 
@@ -40,7 +41,8 @@ export default function CameraScreen({
   onTerms,
   onPrivacy,
   onCookies,
-  onCountdownTodo
+  onCountdownTodo,
+  onLocations
 }: CameraScreenProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -77,6 +79,7 @@ export default function CameraScreen({
         onProfile={onProfile}
         onSettings={onSettings}
         onCountdownTodo={onCountdownTodo}
+        onLocations={onLocations}
       />
 
       {/* Header */}
