@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Sidebar from "./Sidebar";
 import { 
@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 interface DashboardScreenProps {
+  initialSidebarOpen?: boolean;
   onLogout: () => void;
   onTerms: () => void;
   onPrivacy: () => void;
@@ -31,9 +32,14 @@ interface DashboardScreenProps {
   onMed: () => void;
   onCountdownTodo: () => void;
   onLocations: () => void;
+  onItinerary: () => void;
+  onTipping: () => void;
+  onLaws: () => void;
+  onMaps: () => void;
 }
 
 export default function DashboardScreen({ 
+  initialSidebarOpen = false,
   onLogout, 
   onTerms, 
   onPrivacy, 
@@ -44,9 +50,18 @@ export default function DashboardScreen({
   onCamera,
   onMed,
   onCountdownTodo,
-  onLocations
+  onLocations,
+  onItinerary,
+  onTipping,
+  onLaws,
+  onMaps
 }: DashboardScreenProps) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(initialSidebarOpen);
+
+  useEffect(() => {
+    setIsSidebarOpen(initialSidebarOpen);
+  }, [initialSidebarOpen]);
+
   const companions = [
     { name: "Sarah", avatar: "https://picsum.photos/seed/sarah/100/100" },
     { name: "James", avatar: "https://picsum.photos/seed/james/100/100" },
@@ -65,6 +80,11 @@ export default function DashboardScreen({
         onSettings={onSettings}
         onCountdownTodo={onCountdownTodo}
         onLocations={onLocations}
+        onItinerary={onItinerary}
+        onTipping={onTipping}
+        onLaws={onLaws}
+        onMed={onMed}
+        onMaps={onMaps}
       />
 
       {/* Header */}

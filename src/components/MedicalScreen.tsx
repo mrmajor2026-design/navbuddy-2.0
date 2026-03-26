@@ -17,10 +17,12 @@ import {
   BriefcaseMedical,
   Pill,
   Wind,
-  Plus
+  Plus,
+  ArrowLeft
 } from "lucide-react";
 
 interface MedicalScreenProps {
+  onBack: () => void;
   onHome: () => void;
   onCurrency: () => void;
   onCamera: () => void;
@@ -32,9 +34,14 @@ interface MedicalScreenProps {
   onCookies: () => void;
   onCountdownTodo: () => void;
   onLocations: () => void;
+  onItinerary: () => void;
+  onTipping: () => void;
+  onLaws: () => void;
+  onMaps: () => void;
 }
 
 export default function MedicalScreen({ 
+  onBack,
   onHome, 
   onCurrency, 
   onCamera,
@@ -45,7 +52,11 @@ export default function MedicalScreen({
   onPrivacy,
   onCookies,
   onCountdownTodo,
-  onLocations
+  onLocations,
+  onItinerary,
+  onTipping,
+  onLaws,
+  onMaps
 }: MedicalScreenProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -92,15 +103,20 @@ export default function MedicalScreen({
         onSettings={onSettings}
         onCountdownTodo={onCountdownTodo}
         onLocations={onLocations}
+        onItinerary={onItinerary}
+        onTipping={onTipping}
+        onLaws={onLaws}
+        onMed={() => setIsSidebarOpen(false)}
+        onMaps={onMaps}
       />
 
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-4 sticky top-0 bg-white z-10">
         <button 
-          onClick={() => setIsSidebarOpen(true)}
+          onClick={onBack}
           className="p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
         >
-          <Menu size={20} className="text-[#0F172A]" />
+          <ArrowLeft size={20} className="text-[#0F172A]" />
         </button>
         <h2 className="text-xl font-bold text-[#0F172A]">NavBuddy</h2>
         <div className="flex gap-2">

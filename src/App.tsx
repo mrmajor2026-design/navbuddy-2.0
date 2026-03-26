@@ -18,16 +18,31 @@ import CameraScreen from "./components/CameraScreen";
 import MedicalScreen from "./components/MedicalScreen";
 import CountdownTodoScreen from "./components/CountdownTodoScreen";
 import LocationsScreen from "./components/LocationsScreen";
+import ItineraryScreen from "./components/ItineraryScreen";
+import TippingGuideScreen from "./components/TippingGuideScreen";
+import LawsScreen from "./components/LawsScreen";
+import MapsScreen from "./components/MapsScreen";
+import PersonalInfoScreen from "./components/PersonalInfoScreen";
+import TravelPreferencesScreen from "./components/TravelPreferencesScreen";
+import SecuritySettingsScreen from "./components/SecuritySettingsScreen";
+import EmergencyContactsScreen from "./components/EmergencyContactsScreen";
+import NotificationsSettingsScreen from "./components/NotificationsSettingsScreen";
+import LanguageSettingsScreen from "./components/LanguageSettingsScreen";
+import UnitsSettingsScreen from "./components/UnitsSettingsScreen";
+import PrivacySettingsScreen from "./components/PrivacySettingsScreen";
+import HelpSupportScreen from "./components/HelpSupportScreen";
 
-type Screen = "welcome" | "signup" | "login" | "dashboard" | "terms" | "privacy" | "cookies" | "profile" | "settings" | "currency" | "camera" | "medical" | "countdown_todo" | "locations";
+type Screen = "welcome" | "signup" | "login" | "dashboard" | "terms" | "privacy" | "cookies" | "profile" | "settings" | "currency" | "camera" | "medical" | "countdown_todo" | "locations" | "itinerary" | "tipping" | "laws" | "maps" | "personal_info" | "travel_prefs" | "security" | "emergency" | "notif_settings" | "lang_settings" | "unit_settings" | "priv_settings" | "help_support";
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("welcome");
   const [previousScreen, setPreviousScreen] = useState<Screen>("welcome");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const navigateTo = (screen: Screen) => {
+  const navigateTo = (screen: Screen, openSidebar: boolean = false) => {
     setPreviousScreen(currentScreen);
     setCurrentScreen(screen);
+    setSidebarOpen(openSidebar);
   };
 
   return (
@@ -57,6 +72,7 @@ export default function App() {
       )}
       {currentScreen === "dashboard" && (
         <DashboardScreen 
+          initialSidebarOpen={sidebarOpen}
           onLogout={() => navigateTo("welcome")}
           onTerms={() => navigateTo("terms")}
           onPrivacy={() => navigateTo("privacy")}
@@ -68,11 +84,59 @@ export default function App() {
           onMed={() => navigateTo("medical")}
           onCountdownTodo={() => navigateTo("countdown_todo")}
           onLocations={() => navigateTo("locations")}
+          onItinerary={() => navigateTo("itinerary")}
+          onTipping={() => navigateTo("tipping")}
+          onLaws={() => navigateTo("laws")}
+          onMaps={() => navigateTo("maps")}
+        />
+      )}
+      {currentScreen === "maps" && (
+        <MapsScreen 
+          onBack={() => navigateTo("dashboard", true)}
+          onHome={() => navigateTo("dashboard")}
+          onCurrency={() => navigateTo("currency")}
+          onCamera={() => navigateTo("camera")}
+          onMed={() => navigateTo("medical")}
+          onProfile={() => navigateTo("profile")}
+          onSettings={() => navigateTo("settings")}
+        />
+      )}
+      {currentScreen === "itinerary" && (
+        <ItineraryScreen 
+          onBack={() => navigateTo("dashboard", true)}
+          onHome={() => navigateTo("dashboard")}
+          onCurrency={() => navigateTo("currency")}
+          onCamera={() => navigateTo("camera")}
+          onMed={() => navigateTo("medical")}
+          onProfile={() => navigateTo("profile")}
+          onSettings={() => navigateTo("settings")}
+        />
+      )}
+      {currentScreen === "tipping" && (
+        <TippingGuideScreen 
+          onBack={() => navigateTo("dashboard", true)}
+          onHome={() => navigateTo("dashboard")}
+          onCurrency={() => navigateTo("currency")}
+          onCamera={() => navigateTo("camera")}
+          onMed={() => navigateTo("medical")}
+          onProfile={() => navigateTo("profile")}
+          onSettings={() => navigateTo("settings")}
+        />
+      )}
+      {currentScreen === "laws" && (
+        <LawsScreen 
+          onBack={() => navigateTo("dashboard", true)}
+          onHome={() => navigateTo("dashboard")}
+          onCurrency={() => navigateTo("currency")}
+          onCamera={() => navigateTo("camera")}
+          onMed={() => navigateTo("medical")}
+          onProfile={() => navigateTo("profile")}
+          onSettings={() => navigateTo("settings")}
         />
       )}
       {currentScreen === "locations" && (
         <LocationsScreen 
-          onBack={() => navigateTo("dashboard")}
+          onBack={() => navigateTo("dashboard", true)}
           onHome={() => navigateTo("dashboard")}
           onCurrency={() => navigateTo("currency")}
           onCamera={() => navigateTo("camera")}
@@ -83,11 +147,12 @@ export default function App() {
       )}
       {currentScreen === "countdown_todo" && (
         <CountdownTodoScreen 
-          onBack={() => navigateTo("dashboard")}
+          onBack={() => navigateTo("dashboard", true)}
         />
       )}
       {currentScreen === "medical" && (
         <MedicalScreen 
+          onBack={() => navigateTo("dashboard", true)}
           onHome={() => navigateTo("dashboard")}
           onCurrency={() => navigateTo("currency")}
           onCamera={() => navigateTo("camera")}
@@ -99,19 +164,60 @@ export default function App() {
           onCookies={() => navigateTo("cookies")}
           onCountdownTodo={() => navigateTo("countdown_todo")}
           onLocations={() => navigateTo("locations")}
+          onItinerary={() => navigateTo("itinerary")}
+          onTipping={() => navigateTo("tipping")}
+          onLaws={() => navigateTo("laws")}
+          onMaps={() => navigateTo("maps")}
         />
       )}
       {currentScreen === "profile" && (
         <ProfileScreen 
           onBack={() => navigateTo("dashboard")}
           onSettings={() => navigateTo("settings")}
+          onPersonalInfo={() => navigateTo("personal_info")}
+          onTravelPrefs={() => navigateTo("travel_prefs")}
+          onSecurity={() => navigateTo("security")}
+          onEmergency={() => navigateTo("emergency")}
         />
+      )}
+      {currentScreen === "personal_info" && (
+        <PersonalInfoScreen onBack={() => navigateTo("profile")} />
+      )}
+      {currentScreen === "travel_prefs" && (
+        <TravelPreferencesScreen onBack={() => navigateTo("profile")} />
+      )}
+      {currentScreen === "security" && (
+        <SecuritySettingsScreen onBack={() => navigateTo("profile")} />
+      )}
+      {currentScreen === "emergency" && (
+        <EmergencyContactsScreen onBack={() => navigateTo("profile")} />
       )}
       {currentScreen === "settings" && (
         <SettingsScreen 
-          onBack={() => navigateTo(previousScreen === "settings" ? "dashboard" : previousScreen)}
+          onBack={() => navigateTo("dashboard")}
           onProfile={() => navigateTo("profile")}
+          onNotifications={() => navigateTo("notif_settings")}
+          onLanguage={() => navigateTo("lang_settings")}
+          onUnits={() => navigateTo("unit_settings")}
+          onPrivacy={() => navigateTo("priv_settings")}
+          onHelp={() => navigateTo("help_support")}
+          onLogout={() => navigateTo("welcome")}
         />
+      )}
+      {currentScreen === "notif_settings" && (
+        <NotificationsSettingsScreen onBack={() => navigateTo("settings")} />
+      )}
+      {currentScreen === "lang_settings" && (
+        <LanguageSettingsScreen onBack={() => navigateTo("settings")} />
+      )}
+      {currentScreen === "unit_settings" && (
+        <UnitsSettingsScreen onBack={() => navigateTo("settings")} />
+      )}
+      {currentScreen === "priv_settings" && (
+        <PrivacySettingsScreen onBack={() => navigateTo("settings")} />
+      )}
+      {currentScreen === "help_support" && (
+        <HelpSupportScreen onBack={() => navigateTo("settings")} />
       )}
       {currentScreen === "terms" && (
         <TermsOfServiceScreen 
@@ -147,6 +253,10 @@ export default function App() {
           onCamera={() => navigateTo("camera")}
           onCountdownTodo={() => navigateTo("countdown_todo")}
           onLocations={() => navigateTo("locations")}
+          onItinerary={() => navigateTo("itinerary")}
+          onTipping={() => navigateTo("tipping")}
+          onLaws={() => navigateTo("laws")}
+          onMaps={() => navigateTo("maps")}
         />
       )}
       {currentScreen === "camera" && (
@@ -162,6 +272,10 @@ export default function App() {
           onCookies={() => navigateTo("cookies")}
           onCountdownTodo={() => navigateTo("countdown_todo")}
           onLocations={() => navigateTo("locations")}
+          onItinerary={() => navigateTo("itinerary")}
+          onTipping={() => navigateTo("tipping")}
+          onLaws={() => navigateTo("laws")}
+          onMaps={() => navigateTo("maps")}
         />
       )}
     </>

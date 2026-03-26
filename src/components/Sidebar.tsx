@@ -37,6 +37,11 @@ interface SidebarProps {
   onSettings: () => void;
   onCountdownTodo: () => void;
   onLocations: () => void;
+  onItinerary: () => void;
+  onTipping: () => void;
+  onLaws: () => void;
+  onMed: () => void;
+  onMaps: () => void;
 }
 
 export default function Sidebar({ 
@@ -49,17 +54,22 @@ export default function Sidebar({
   onProfile, 
   onSettings,
   onCountdownTodo,
-  onLocations
+  onLocations,
+  onItinerary,
+  onTipping,
+  onLaws,
+  onMed,
+  onMaps
 }: SidebarProps) {
   const menuItems: { icon: any; label: string; active?: boolean; onClick?: () => void }[] = [
     { icon: Home, label: "Home", active: true },
     { icon: Timer, label: "Countdown/To-Do", onClick: onCountdownTodo },
-    { icon: Calendar, label: "Itinerary Planner" },
-    { icon: Map, label: "Maps" },
+    { icon: Calendar, label: "Itinerary Planner", onClick: onItinerary },
+    { icon: Map, label: "Maps", onClick: onMaps },
     { icon: MapPin, label: "Essential Locations", onClick: onLocations },
-    { icon: Banknote, label: "Tipping Guide" },
-    { icon: BriefcaseMedical, label: "Allergies" },
-    { icon: Gavel, label: "Laws" },
+    { icon: Banknote, label: "Tipping Guide", onClick: onTipping },
+    { icon: BriefcaseMedical, label: "Allergies", onClick: onMed },
+    { icon: Gavel, label: "Laws", onClick: onLaws },
     { icon: Download, label: "Download Maps" },
     { icon: Languages, label: "Download Language Packs" },
   ];

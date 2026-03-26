@@ -29,6 +29,10 @@ interface CameraScreenProps {
   onCookies: () => void;
   onCountdownTodo: () => void;
   onLocations: () => void;
+  onItinerary: () => void;
+  onTipping: () => void;
+  onLaws: () => void;
+  onMaps: () => void;
 }
 
 export default function CameraScreen({ 
@@ -42,7 +46,11 @@ export default function CameraScreen({
   onPrivacy,
   onCookies,
   onCountdownTodo,
-  onLocations
+  onLocations,
+  onItinerary,
+  onTipping,
+  onLaws,
+  onMaps
 }: CameraScreenProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -80,6 +88,11 @@ export default function CameraScreen({
         onSettings={onSettings}
         onCountdownTodo={onCountdownTodo}
         onLocations={onLocations}
+        onItinerary={onItinerary}
+        onTipping={onTipping}
+        onLaws={onLaws}
+        onMed={onMed}
+        onMaps={onMaps}
       />
 
       {/* Header */}
